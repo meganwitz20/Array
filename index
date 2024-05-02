@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Objects and Arrays</title>
+</head>
+
+<body>
+  <h1>Objects and Arrays</h1>
+
+  <script>
+    // 👉 Objects review
+    let user = { name: 'Jane', born: 1977, isHappy: true };
+    let name = user.name;
+    let fail = user.foo;
+    user.hobbies = ['hiking', 'fishing'];
+    // 👉 Object constructing
+    function makeAnimal(name, age, species) {
+      let animal = {};
+      animal.name = name;
+      animal.age = age;
+      animal.species = species;
+      return animal;
+      // return { name, age, species } // simpler
+    }
+    let goldie = makeAnimal('Goldie', 29, 'Goldfish'); // Capture the returned value
+    console.log(goldie);
+    // 👉 Finding out whether a property exists on an object
+    let plane = { model: '' };
+    if (plane.model) {
+      console.log('has model prop (which is truthy)');
+    }
+    if (plane.model !== undefined) {
+      console.log('has model prop (which is not undefined)');
+    }
+    // 👉 Arrays review
+    let arr = ['a', 'b', 'c', 45, true];
+    let first = arr[0];
+    let second = arr[1];
+    let last = arr[arr.length - 1];
+    // 👉 Is the length of an array even or odd
+    function isEvenNumOfElements(arr) {
+      let isEven = arr.length % 2 === 0;
+      let isOdd = arr.length % 2 !== 0;
+      if (isEven) {
+        console.log('arr has an even number of elements');
+      } else if (isOdd) {
+        console.log('arr has an odd number of elements');
+      }
+    }
+    // 👉 Accessing the first and last elements of an array
+    function getFirst(arr) {
+      return arr[0];
+    }
+    function getLast(arr) {
+      // return arr[arr.length - 1]
+      return arr[arr.length - 1]; // Use this instead of arr.at(-1)
+    }
+    // 👉 Pushing new elements into an existing array
+    let numbers = [1, 2, 3, 4];
+    numbers[4] = 5;
+    numbers.push(6); // better
+    // 👉 Looping over objects and arrays
+    let obj = { name: 'foo', age: 25, isHappy: true };
+    let letters = ['a', 'b', 'c', 'd'];
+
+    for (let key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        let value = obj[key];
+      }
+    }
+    for (let idx in letters) {
+      let element = letters[idx];
+    }
+    // 👉 CHALLENGE Splitting a string into an array of characters and rejoining
+    function loopOverChars(word) {
+      let result = [];
+      let split = word.split('');
+      for (let index in split) {
+        let char = split[index];
+        // Check if char is lowercase before converting to uppercase
+        if (char === char.toLowerCase()) {
+          result.push(char.toUpperCase());
+        } else {
+          result.push(char);
+        }
+      }
+      return result.join('');
+    }
+    console.log(loopOverChars('Spitfire'));
+  </script>
+</body>
+
+</html>
+ 
